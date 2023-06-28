@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-js-deploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nodejs-app
+  template:
+    metadata:
+      labels:
+        app: nodejs-app
+    spec:
+      containers:
+      - image: naresh1985/node-hello-world:32
+        name: nodejs-app
+        ports:
+        - containerPort: 5000
+		
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-js-svc
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: 5000
+	nodePort: 32000
+  selector:
+    app: nodejs-app
+	

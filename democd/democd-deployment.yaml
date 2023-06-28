@@ -16,4 +16,4 @@ spec:
       - image: naresh1985/node-hello-world:32
         name: nodejs-app
         ports:
-        - containerPort: 5000
+        - containerPort: 4000
